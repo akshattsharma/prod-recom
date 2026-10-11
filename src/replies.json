@@ -1,11 +1,17 @@
 {
   "greeting": "Tell me what you're shopping for and your budget, and I'll suggest something you'll like.",
   "fallback": "Sorry, I did not understand your query!",
+  "budgetPrompt": "Please select your budget (500 - 1000, 1000 - 1500, 1500 - 2000)",
+  "budgetChoices": [
+    "500 - 1000",
+    "1000 - 1500",
+    "1500 - 2000"
+  ],
   "starters": [
-    "Suggest a laptop for me",
-    "I need a new phone",
+    "Suggest jeans for me",
+    "Find me running shoes",
     "Best headphones for travel",
-    "Find me running shoes"
+    "Show me a smartwatch"
   ],
   "smallTalk": [
     {
@@ -17,7 +23,7 @@
         "good morning",
         "good evening"
       ],
-      "answer": "Hello! I can recommend laptops, phones, headphones, shoes, smartwatches, jeans, jackets and tablets. What are you looking for?"
+      "answer": "Hello! I can recommend jeans, t-shirts, shoes, smartwatches, headphones, backpacks and jackets. What are you looking for?"
     },
     {
       "keywords": [
@@ -32,7 +38,7 @@
         "what can you do",
         "who are you"
       ],
-      "answer": "I'm a product recommendation assistant. Name a product (laptop, phone, headphones, shoes, smartwatch, jeans, jacket or tablet), then give me a budget like 500-1000, and I'll suggest options."
+      "answer": "I'm a product recommendation assistant. Name a product (jeans, t-shirts, shoes, smartwatch, headphones, backpack or jacket), pick a budget, and I'll suggest options."
     },
     {
       "keywords": [
@@ -44,90 +50,58 @@
   ],
   "products": [
     {
-      "id": "laptop",
-      "name": "laptop",
+      "id": "jeans",
+      "name": "jeans",
       "keywords": [
-        "laptop",
-        "laptops",
-        "notebook",
-        "macbook"
+        "jeans",
+        "jean",
+        "denim"
       ],
-      "prompt": "Great choice! What's your budget for a laptop? Give me a range in USD, for example 500-1000.",
       "tiers": [
         {
           "min": 0,
-          "max": 500,
-          "answer": "Budget laptops (under $500):\n• Acer Aspire 5 – solid all-rounder for study and browsing\n• Lenovo IdeaPad Slim 3 – light, with a good keyboard\nPrices are approximate. Send another range to compare."
-        },
-        {
-          "min": 500,
           "max": 1000,
-          "answer": "Mid-range laptops ($500–$1000):\n• ASUS Zenbook 14 – slim, bright OLED screen\n• HP Pavilion Plus 14 – balanced performance and battery\n• Lenovo Yoga 7i – flexible 2-in-1\nPrices are approximate. Send another range to compare."
+          "answer": "Jeans in the ₹500 – ₹1000 range:\n• Roadster Slim Fit Jeans – everyday stretch denim\n• Highlander Slim Fit Jeans – lots of washes to pick from\n• Dennis Lingo Jeans – budget-friendly basics\nPrices are approximate and change often. Pick another range to compare."
         },
         {
           "min": 1000,
+          "max": 1500,
+          "answer": "Jeans in the ₹1000 – ₹1500 range:\n• Wrangler Straight Fit Jeans – durable and comfortable\n• Pepe Jeans Slim Fit – trendy washes\n• Flying Machine Slim Jeans – casual everyday wear\nPrices are approximate and change often. Pick another range to compare."
+        },
+        {
+          "min": 1500,
           "max": null,
-          "answer": "Premium laptops ($1000+):\n• MacBook Air (M3) – excellent battery life and display\n• Dell XPS 13 – compact, premium build\n• Lenovo ThinkPad X1 Carbon – best-in-class keyboard\nPrices are approximate. Send another range to compare."
+          "answer": "Jeans in the ₹1500 – ₹2000 range:\n• Levi's 511 Slim Fit – watch for sale prices\n• Lee Slim Fit Jeans – soft and long-lasting\n• Jack & Jones Slim Jeans – modern fit\nPrices are approximate and change often. Pick another range to compare."
         }
       ]
     },
     {
-      "id": "phone",
-      "name": "phone",
+      "id": "tshirt",
+      "name": "t-shirts",
       "keywords": [
-        "phone",
-        "phones",
-        "smartphone",
-        "smartphones",
-        "mobile",
-        "iphone",
-        "android"
+        "tshirt",
+        "tshirts",
+        "t shirt",
+        "t shirts",
+        "shirt",
+        "shirts",
+        "tee"
       ],
-      "prompt": "Happy to help you find a phone! What's your budget? Give me a range in USD, for example 300-700.",
       "tiers": [
         {
           "min": 0,
-          "max": 300,
-          "answer": "Phones under $300:\n• Samsung Galaxy A15 – big screen, reliable battery\n• Motorola Moto G Power – multi-day battery life\nPrices are approximate. Send another range to compare."
+          "max": 1000,
+          "answer": "T-shirts in the ₹500 – ₹1000 range:\n• Roadster Cotton T-shirt – soft and simple\n• Bewakoof Printed T-shirt – fun graphics\n• Max Basics Crew Neck – great value\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 300,
-          "max": 700,
-          "answer": "Phones from $300 to $700:\n• Google Pixel 8a – great camera, long software support\n• Samsung Galaxy A55 – bright display, water resistant\n• Nothing Phone (2a) – clean software and a distinct design\nPrices are approximate. Send another range to compare."
+          "min": 1000,
+          "max": 1500,
+          "answer": "T-shirts in the ₹1000 – ₹1500 range:\n• U.S. Polo Assn. Polo – classic and smart\n• Puma Essentials Tee – sporty look\n• Allen Solly Casual Tee – office-friendly\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 700,
+          "min": 1500,
           "max": null,
-          "answer": "Flagship phones ($700+):\n• iPhone 15 Pro – top-tier performance and video\n• Samsung Galaxy S24 – compact with a superb screen\n• Google Pixel 9 Pro – best-in-class AI features\nPrices are approximate. Send another range to compare."
-        }
-      ]
-    },
-    {
-      "id": "headphones",
-      "name": "headphones",
-      "keywords": [
-        "headphones",
-        "headphone",
-        "earbuds",
-        "earphones",
-        "airpods"
-      ],
-      "prompt": "Nice! What's your budget for headphones? Give me a range in USD, for example 100-300.",
-      "tiers": [
-        {
-          "min": 0,
-          "max": 100,
-          "answer": "Headphones under $100:\n• Anker Soundcore Q30 – noise cancelling on a budget\n• JBL Tune 520BT – light and long-lasting\nPrices are approximate. Send another range to compare."
-        },
-        {
-          "min": 100,
-          "max": 300,
-          "answer": "Headphones from $100 to $300:\n• Sony WH-1000XM4 – a long-time favourite for travel\n• Sennheiser Accentum Plus – balanced sound, strong battery\n• Soundcore Space One – good noise cancelling for the price\nPrices are approximate. Send another range to compare."
-        },
-        {
-          "min": 300,
-          "max": null,
-          "answer": "Premium headphones ($300+):\n• Sony WH-1000XM5 – top noise cancelling and comfort\n• Bose QuietComfort Ultra – excellent immersive sound\n• Apple AirPods Max – best for the Apple ecosystem\nPrices are approximate. Send another range to compare."
+          "answer": "T-shirts in the ₹1500 – ₹2000 range:\n• Levi's Graphic Tee – iconic branding\n• Jack & Jones Crew Neck Tee – premium cotton\n• Nike Sportswear Tee – look for sales\nPrices are approximate and change often. Pick another range to compare."
         }
       ]
     },
@@ -141,134 +115,133 @@
         "trainers",
         "footwear"
       ],
-      "prompt": "Let's find you a good pair! What's your budget for running shoes? Give me a range in USD, for example 80-150.",
       "tiers": [
         {
           "min": 0,
-          "max": 100,
-          "answer": "Running shoes under $100:\n• Nike Revolution 7 – light everyday trainer\n• Adidas Duramo SL – comfortable and affordable\nPrices are approximate. Send another range to compare."
+          "max": 1000,
+          "answer": "Running shoes in the ₹500 – ₹1000 range:\n• Campus Running Shoes – lightweight and affordable\n• Sparx Sports Shoes – everyday comfort\n• Bata Power Sneakers – sturdy build\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 100,
-          "max": 160,
-          "answer": "Running shoes from $100 to $160:\n• Brooks Ghost 16 – smooth, cushioned daily trainer\n• Hoka Clifton 9 – soft and lightweight\n• ASICS Novablast 4 – bouncy and fun\nPrices are approximate. Send another range to compare."
+          "min": 1000,
+          "max": 1500,
+          "answer": "Running shoes in the ₹1000 – ₹1500 range:\n• Puma Flyer Runner – cushioned daily trainer\n• Red Tape Sneakers – casual and clean\n• Adidas Duramo – look for sale prices\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 160,
+          "min": 1500,
           "max": null,
-          "answer": "Premium running shoes ($160+):\n• ASICS Superblast 2 – plush and very durable\n• Nike Vaporfly 3 – built for race day\n• Saucony Endorphin Speed 4 – fast with a nylon plate\nPrices are approximate. Send another range to compare."
+          "answer": "Running shoes in the ₹1500 – ₹2000 range:\n• Nike Revolution 7 – watch for discounts\n• Puma Softride – plush and light\n• Adidas Questar – comfortable cushioning\nPrices are approximate and change often. Pick another range to compare."
         }
       ]
     },
     {
       "id": "watch",
-      "name": "smartwatch",
+      "name": "smartwatches",
       "keywords": [
         "watch",
         "watches",
         "smartwatch",
-        "smartwatches",
-        "fitness tracker"
+        "smartwatches"
       ],
-      "prompt": "Good pick! What's your budget for a smartwatch? Give me a range in USD, for example 100-400.",
       "tiers": [
         {
           "min": 0,
-          "max": 150,
-          "answer": "Smartwatches under $150:\n• Amazfit Bip 5 – big screen, great battery\n• Fitbit Inspire 3 – simple fitness and sleep tracking\nPrices are approximate. Send another range to compare."
+          "max": 1000,
+          "answer": "Smartwatches in the ₹500 – ₹1000 range:\n• Fastrack Analog Watch – stylish everyday pick\n• Fire-Boltt Ninja Call Pro – calling and fitness tracking\n• Noise ColorFit Icon – bright display\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 150,
-          "max": 400,
-          "answer": "Smartwatches from $150 to $400:\n• Apple Watch SE – best value for iPhone users\n• Samsung Galaxy Watch 6 – polished Android option\n• Garmin Venu Sq 2 – multi-day battery with solid sport tracking\nPrices are approximate. Send another range to compare."
+          "min": 1000,
+          "max": 1500,
+          "answer": "Smartwatches in the ₹1000 – ₹1500 range:\n• Noise ColorFit Pulse – big screen, good battery\n• boAt Wave Call – Bluetooth calling\n• Casio Enticer – dependable analog classic\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 400,
+          "min": 1500,
           "max": null,
-          "answer": "Premium smartwatches ($400+):\n• Apple Watch Ultra 2 – rugged with a bright display\n• Garmin Fenix 7 – built for serious outdoor training\n• Google Pixel Watch 3 – clean design, Fitbit health tools\nPrices are approximate. Send another range to compare."
+          "answer": "Smartwatches in the ₹1500 – ₹2000 range:\n• Titan Neo – refined analog design\n• Casio Vintage Digital – retro favourite\n• boAt Wave Elite – feature-packed smartwatch\nPrices are approximate and change often. Pick another range to compare."
         }
       ]
     },
     {
-      "id": "jeans",
-      "name": "jeans",
+      "id": "headphones",
+      "name": "headphones",
       "keywords": [
-        "jeans",
-        "denim",
-        "jean"
+        "headphones",
+        "headphone",
+        "earbuds",
+        "earphones",
+        "airpods",
+        "neckband"
       ],
-      "prompt": "Good call! What's your budget for jeans? Give me a range in USD, for example 40-100.",
       "tiers": [
         {
           "min": 0,
-          "max": 40,
-          "answer": "Jeans under $40:\n• Wrangler Authentics Regular Fit – tough and comfortable\n• Old Navy Straight Jeans – everyday basics\nPrices are approximate. Send another range to compare."
+          "max": 1000,
+          "answer": "Headphones in the ₹500 – ₹1000 range:\n• boAt Rockerz 103 – lightweight neckband\n• realme Buds 2 – wired with strong bass\n• Boult Audio neckband – long battery life\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 40,
-          "max": 100,
-          "answer": "Jeans from $40 to $100:\n• Levi's 501 Original – the classic straight fit\n• Levi's 511 Slim – clean modern slim cut\n• Gap Straight Jeans – soft stretch denim\nPrices are approximate. Send another range to compare."
+          "min": 1000,
+          "max": 1500,
+          "answer": "Headphones in the ₹1000 – ₹1500 range:\n• boAt Rockerz 255 Pro+ – reliable wireless neckband\n• Noise Tune Active Plus – comfortable fit\n• Boult Audio Z40 – low-latency earbuds\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 100,
+          "min": 1500,
           "max": null,
-          "answer": "Premium jeans ($100+):\n• Levi's Made & Crafted – refined denim and fit\n• AG Everett Slim Straight – stretch with a tailored look\n• Nudie Jeans Lean Dean – organic selvedge-style denim\nPrices are approximate. Send another range to compare."
+          "answer": "Headphones in the ₹1500 – ₹2000 range:\n• boAt Rockerz 450 – on-ear with great battery life\n• OnePlus Bullets Z2 – balanced sound\n• realme Buds Wireless 3 – deep bass and ANC\nPrices are approximate and change often. Pick another range to compare."
+        }
+      ]
+    },
+    {
+      "id": "backpack",
+      "name": "backpacks",
+      "keywords": [
+        "backpack",
+        "backpacks",
+        "bag",
+        "bags"
+      ],
+      "tiers": [
+        {
+          "min": 0,
+          "max": 1000,
+          "answer": "Backpacks in the ₹500 – ₹1000 range:\n• Skybags Strike – roomy and light\n• Safari Pentagon – sturdy and simple\n• F Gear Casual Backpack – everyday carry\nPrices are approximate and change often. Pick another range to compare."
+        },
+        {
+          "min": 1000,
+          "max": 1500,
+          "answer": "Backpacks in the ₹1000 – ₹1500 range:\n• Wildcraft Casual Backpack – durable fabric\n• Puma Phase Backpack – sporty design\n• American Tourister Fizz – laptop sleeve included\nPrices are approximate and change often. Pick another range to compare."
+        },
+        {
+          "min": 1500,
+          "max": null,
+          "answer": "Backpacks in the ₹1500 – ₹2000 range:\n• American Tourister Zing – premium look\n• Wildcraft Camper – built for trips\n• Fastrack Backpack – stylish and compact\nPrices are approximate and change often. Pick another range to compare."
         }
       ]
     },
     {
       "id": "jacket",
-      "name": "jacket",
+      "name": "jackets",
       "keywords": [
         "jacket",
         "jackets",
         "coat",
         "coats",
-        "hoodie"
+        "hoodie",
+        "hoodies"
       ],
-      "prompt": "Nice! What's your budget for a jacket? Give me a range in USD, for example 80-200.",
       "tiers": [
         {
           "min": 0,
-          "max": 80,
-          "answer": "Jackets under $80:\n• Columbia Rain Jacket – light and weatherproof\n• Uniqlo Ultra Light Down – packs small, surprisingly warm\nPrices are approximate. Send another range to compare."
+          "max": 1000,
+          "answer": "Jackets in the ₹500 – ₹1000 range:\n• Roadster Casual Jacket – light layer\n• Bewakoof Hoodie – soft fleece\n• Dennis Lingo Bomber – trendy and cheap\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 80,
-          "max": 200,
-          "answer": "Jackets from $80 to $200:\n• Patagonia Nano Puff – warm, light, packable\n• The North Face Resolve 2 – dependable rain protection\n• Levi's Trucker Jacket – a timeless everyday layer\nPrices are approximate. Send another range to compare."
+          "min": 1000,
+          "max": 1500,
+          "answer": "Jackets in the ₹1000 – ₹1500 range:\n• Highlander Bomber Jacket – easy styling\n• Wrangler Denim Jacket – timeless\n• U.S. Polo Assn. Zip Hoodie – warm and neat\nPrices are approximate and change often. Pick another range to compare."
         },
         {
-          "min": 200,
+          "min": 1500,
           "max": null,
-          "answer": "Premium jackets ($200+):\n• Arc'teryx Beta LT – top-tier waterproof shell\n• Canada Goose Expedition Parka – for serious cold\n• Barbour Beaufort Wax Jacket – classic and long-lasting\nPrices are approximate. Send another range to compare."
-        }
-      ]
-    },
-    {
-      "id": "tablet",
-      "name": "tablet",
-      "keywords": [
-        "tablet",
-        "tablets",
-        "ipad"
-      ],
-      "prompt": "Sure thing! What's your budget for a tablet? Give me a range in USD, for example 200-500.",
-      "tiers": [
-        {
-          "min": 0,
-          "max": 250,
-          "answer": "Tablets under $250:\n• Amazon Fire HD 10 – great for reading and video\n• Samsung Galaxy Tab A9+ – solid all-rounder\nPrices are approximate. Send another range to compare."
-        },
-        {
-          "min": 250,
-          "max": 600,
-          "answer": "Tablets from $250 to $600:\n• Apple iPad (10th gen) – smooth and long-supported\n• Samsung Galaxy Tab S9 FE – good screen and S Pen included\n• OnePlus Pad – fast, with a big display\nPrices are approximate. Send another range to compare."
-        },
-        {
-          "min": 600,
-          "max": null,
-          "answer": "Premium tablets ($600+):\n• iPad Pro – the most powerful tablet around\n• Samsung Galaxy Tab S9 Ultra – huge AMOLED screen\n• Apple iPad Air (M2) – near-Pro power for less\nPrices are approximate. Send another range to compare."
+          "answer": "Jackets in the ₹1500 – ₹2000 range:\n• Levi's Trucker Jacket – watch for sale prices\n• Jack & Jones Puffer – warm and light\n• Puma Track Jacket – sporty finish\nPrices are approximate and change often. Pick another range to compare."
         }
       ]
     }

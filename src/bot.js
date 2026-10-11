@@ -17,13 +17,13 @@ function parseBudget(input) {
   return value > 0 ? value : null;
 }
 
-// Returns { text, ctx }. ctx remembers the product so the user can try other budgets.
+// Returns { text, ctx, choices? }. ctx remembers the product so the user can try other budgets.
 export function getReply(input, ctx) {
   const text = words(input);
   if (!text.trim()) return { text: data.fallback, ctx };
 
   const product = data.products.find((p) => mentions(text, p.keywords));
-  if (product) return { text: product.prompt, ctx: { product: product.id } };
+  if (product) return { text: data.budgetPrompt, choices: data.budgetChoices, ctx: { product: product.id } };
 
   if (ctx && ctx.product) {
     const current = data.products.find((p) => p.id === ctx.product);

@@ -98,3 +98,7 @@ textarea { resize: vertical; }
   .stage { max-height: calc(100vh - 330px); }
   .composer { flex-wrap: wrap; } .composer input { flex-basis: 100%; } .composer .btn { flex: 1; }
 }
+
+.choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.chip { border: 1px solid var(--accent); background: transparent; color: var(--accent); padding: 6px 14px; border-radius: 999px; cursor: pointer; font-weight: 600; }
+.chip:hover { background: var(--accent); color: var(--accent-ink); }

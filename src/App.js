@@ -40,7 +40,7 @@ export default function App() {
     setMessages((m) => [
       ...m,
       { id: newId("u"), role: "user", text },
-      { id: newId("a"), role: "ai", text: reply.text },
+      { id: newId("a"), role: "ai", text: reply.text, choices: reply.choices },
     ]);
     setCtx(reply.ctx);
     return true;

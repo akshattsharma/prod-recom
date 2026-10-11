@@ -97,6 +97,13 @@ export default function Chat({ messages, notice, feedbackId, onAsk, onSave, onCl
               <div className="bubble-wrap">
                 <p className="who">{m.role === "ai" ? "Product AI" : "You"}</p>
                 <div className="bubble">{m.text}</div>
+                {m.role === "ai" && m.choices && (
+                  <div className="choices">
+                    {m.choices.map((c) => (
+                      <button type="button" key={c} className="chip" onClick={() => onAsk(c)}>{c}</button>
+                    ))}
+                  </div>
+                )}
                 {m.role === "ai" && <Reactions msg={m} onFeedback={onFeedback} />}
               </div>
             </div>
