@@ -3,7 +3,6 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
 import Chat from "./Chat";
 import History from "./History";
-import FeedbackModal from "./FeedbackModal";
 import { getReply } from "./bot";
 import { logFeedback, upsertConversation } from "./storage";
 
@@ -14,7 +13,7 @@ export default function App() {
   const [messages, setMessages] = useState([]);
   const [ctx, setCtx] = useState(null);
   const [savedId, setSavedId] = useState(null);
-  const [modalId, setModalId] = useState(null);
+  const [feedbackId, setFeedbackId] = useState(null);
   const [notice, setNotice] = useState("");
   const timer = useRef(null);
 
@@ -55,7 +54,7 @@ export default function App() {
     const id = savedId || newId("c");
     upsertConversation(id, messages);
     setSavedId(id);
-    setModalId(id);
+    setFeedbackId(id);
     flash("Conversation saved.");
   };
 
@@ -64,7 +63,13 @@ export default function App() {
     setMessages([]);
     setCtx(null);
     setSavedId(null);
+    setFeedbackId(null);
     setNotice("");
+  };
+
+  const closeFeedback = (submitted) => {
+    setFeedbackId(null);
+    if (submitted) flash("Thanks for your feedback!");
   };
 
   const giveFeedback = (messageId, patch) => {
@@ -83,8 +88,8 @@ export default function App() {
           <h1>Product Recommendation AI</h1>
         </div>
         <nav className="top-nav">
-          <NavLink to="/" end>Chat</NavLink>
-          <NavLink to="/history">Previous Recommendations</NavLink>
+          <NavLink to="/" end onClick={newChat}>Want new suggestion?</NavLink>
+          <NavLink to="/history">Previous Suggestions</NavLink>
           <button
             type="button"
             className="icon-btn"
@@ -103,14 +108,12 @@ export default function App() {
           <Route
             path="*"
             element={
-              <Chat messages={messages} notice={notice} onAsk={ask} onSave={save}
-                onNewChat={newChat} onFeedback={giveFeedback} />
+              <Chat messages={messages} notice={notice} feedbackId={feedbackId} onAsk={ask}
+                onSave={save} onCloseFeedback={closeFeedback} onFeedback={giveFeedback} />
             }
           />
         </Routes>
       </main>
-
-      {modalId && <FeedbackModal conversationId={modalId} onClose={() => setModalId(null)} />}
     </div>
   );
 }

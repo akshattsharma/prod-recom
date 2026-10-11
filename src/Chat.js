@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 import Stars from "./Stars";
+import FeedbackModal from "./FeedbackModal";
 import { GREETING, STARTERS } from "./bot";
 
 function Reactions({ msg, onFeedback }) {
@@ -13,8 +14,7 @@ function Reactions({ msg, onFeedback }) {
     setPanel(v);
   };
 
-  const submitComment = (e) => {
-    e.preventDefault();
+  const submitComment = () => {
     onFeedback(msg.id, { comment: comment.trim() });
     setPanel(null);
   };
@@ -41,15 +41,15 @@ function Reactions({ msg, onFeedback }) {
       )}
 
       {panel === "down" && (
-        <form className="fb-panel" onSubmit={submitComment}>
+        <div className="fb-panel">
           <label htmlFor={`c-${msg.id}`}>What could be better?</label>
           <textarea id={`c-${msg.id}`} rows={3} placeholder="Tell us what was wrong with this answer"
             value={comment} onChange={(e) => setComment(e.target.value)} />
           <div className="fb-row">
             <button type="button" className="link" onClick={() => setPanel(null)}>Cancel</button>
-            <button type="submit" className="btn primary small">Submit</button>
+            <button type="button" className="btn primary small" onClick={submitComment}>Submit</button>
           </div>
-        </form>
+        </div>
       )}
 
       {panel === null && fb.vote === "up" && fb.stars > 0 && <Stars value={fb.stars} readOnly />}
@@ -58,7 +58,7 @@ function Reactions({ msg, onFeedback }) {
   );
 }
 
-export default function Chat({ messages, notice, onAsk, onSave, onNewChat, onFeedback }) {
+export default function Chat({ messages, notice, feedbackId, onAsk, onSave, onCloseFeedback, onFeedback }) {
   const [text, setText] = useState("");
   const listRef = useRef(null);
 
@@ -78,10 +78,6 @@ export default function Chat({ messages, notice, onAsk, onSave, onNewChat, onFee
 
   return (
     <section className="chat">
-      <div className="chat-toolbar">
-        <button type="button" className="btn" onClick={onNewChat}>Want new suggestion?</button>
-      </div>
-
       <div className="stage" ref={listRef}>
         {messages.length === 0 ? (
           <div className="hero">
@@ -109,6 +105,9 @@ export default function Chat({ messages, notice, onAsk, onSave, onNewChat, onFee
       </div>
 
       {notice && <p className="notice" role="status">{notice}</p>}
+      {feedbackId && messages.length > 0 && (
+        <FeedbackModal key={feedbackId} conversationId={feedbackId} onClose={onCloseFeedback} />
+      )}
 
       <form className="composer" onSubmit={submit}>
         <input
@@ -119,7 +118,7 @@ export default function Chat({ messages, notice, onAsk, onSave, onNewChat, onFee
           aria-label="Your message"
         />
         <button type="submit" name="ask" className="btn primary">Ask</button>
-        <button type="submit" name="save" className="btn">Save</button>
+        {messages.length > 0 && <button type="submit" name="save" className="btn">Save</button>}
       </form>
     </section>
   );
