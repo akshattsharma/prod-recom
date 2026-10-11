@@ -68,11 +68,6 @@ export default function Chat({ messages, notice, feedbackId, onAsk, onSave, onCl
 
   const submit = (e) => {
     e.preventDefault();
-    const submitter = e.nativeEvent.submitter;
-    if (submitter && submitter.name === "save") {
-      onSave();
-      return;
-    }
     if (onAsk(text)) setText("");
   };
 
@@ -125,7 +120,7 @@ export default function Chat({ messages, notice, feedbackId, onAsk, onSave, onCl
           aria-label="Your message"
         />
         <button type="submit" name="ask" className="btn primary">Ask</button>
-        {messages.length > 0 && <button type="submit" name="save" className="btn">Save</button>}
+        {messages.length > 0 && <button type="button" name="save" className="btn" onClick={onSave}>Save</button>}
       </form>
     </section>
   );
